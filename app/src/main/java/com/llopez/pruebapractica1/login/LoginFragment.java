@@ -39,6 +39,31 @@ public class LoginFragment extends Fragment {
         editTextTextPassword = layout.findViewById(R.id.editTextTextPassword);
         btnLogin = layout.findViewById(R.id.btnLogin);
 
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                verifyCrendentials();
+            }
+        });
         return layout;
+    }
+    
+    private void verifyCrendentials() {
+        SharedPreferences preferences = getActivity().getSharedPreferences("credential", Context.MODE_PRIVATE);
+
+        String email = preferences.getString("userEmail", "usuarioprueba2022@gmail.com");
+        String password = preferences.getString("userPassword", "pa$$w0rd");
+
+        if (password == editTextTextPassword.getText().toString() && editTextTextEmailAddress.getText().toString().trim().isEmpty() == false) {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("isLogged", true);
+            editor.putBoolean("userEmail", editTextTextEmailAddress.getText().toString().trim());
+            editor.commit();
+
+            NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_menuFragment);
+        } else {
+            Toast toast= Toast.makeText(getContext(), R.string.login_error, Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 }
