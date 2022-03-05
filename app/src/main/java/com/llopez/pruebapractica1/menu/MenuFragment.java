@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.llopez.pruebapractica1.R;
 
@@ -18,6 +19,7 @@ public class MenuFragment extends Fragment {
     private Button btnExcerciseOne;
     private Button btnExcerciseTwo;
     private Button btnLogout;
+    private TextView tvUser;
 
     public MenuFragment() {
         // Required empty public constructor
@@ -36,8 +38,7 @@ public class MenuFragment extends Fragment {
         btnExcerciseOne = layout.findViewById(R.id.btnToExcerciseOne);
         btnExcerciseTwo = layout.findViewById(R.id.btnToExcerciseTwo);
         btnLogout = layout.findViewById(R.id.btnLogout);
-
-
+        tvUser = layout.findViewById(R.id.tvUser);
 
         return layout;
     }
