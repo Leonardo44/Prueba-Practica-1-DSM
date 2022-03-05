@@ -2,7 +2,7 @@
 
 ## Integrantes.
 - Estudiante: Leonardo Elenilson López Cañas.
-    - Carnet: LC171998. \
+    - Carnet: LC171998.
 
 - Estudiante: Kevin Alejandro Romero Quijano.
     - Carnet: RQ172027.
