@@ -39,7 +39,48 @@ public class MenuFragment extends Fragment {
         btnExcerciseTwo = layout.findViewById(R.id.btnToExcerciseTwo);
         btnLogout = layout.findViewById(R.id.btnLogout);
         tvUser = layout.findViewById(R.id.tvUser);
+        
+        btnExcerciseOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toExcerciseOne();
+            }
+        });
 
+        btnExcerciseTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toExcerciseTwo();
+            }
+        });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toLogin();
+            }
+        });
+
+        SharedPreferences preferences = getActivity().getSharedPreferences("credential", Context.MODE_PRIVATE);
+        String email = preferences.getString("userEmail", "usuarioprueba2022@gmail.com");
+        
         return layout;
+    }
+    
+    private void toExcerciseOne() {
+        NavHostFragment.findNavController(this).navigate(R.id.action_menuFragment_to_excerciseOneFragment);
+    }
+
+    private void toExcerciseTwo() {
+        NavHostFragment.findNavController(this).navigate(R.id.action_menuFragment_to_excerciseTwoFragment);
+    }
+
+    private void toLogin() {
+        SharedPreferences preferences = getActivity().getSharedPreferences("credential", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("isLogged", false);
+        editor.commit();
+
+        NavHostFragment.findNavController(this).navigate(R.id.action_menuFragment_to_loginFragment);
     }
 }
