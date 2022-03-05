@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.llopez.pruebapractica1.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.llopez.pruebapractica1.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.llopez.pruebapractica1.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_excerciseOneFragment"
+            app:destination="@id/excerciseOneFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_excerciseTwoFragment"
+            app:destination="@id/excerciseTwoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/excerciseOneFragment"
+        android:name="com.llopez.pruebapractica1.excercise_1.ExcerciseOneFragment"
+        android:label="fragment_excercise_one"
+        tools:layout="@layout/fragment_excercise_one" />
+    <fragment
+        android:id="@+id/excerciseTwoFragment"
+        android:name="com.llopez.pruebapractica1.excercise_2.ExcerciseTwoFragment"
+        android:label="fragment_excercise_two"
+        tools:layout="@layout/fragment_excercise_two" />
+</navigation>
