@@ -21,10 +21,14 @@
         android:id="@+id/loginFragment"
         android:name="com.llopez.pruebapractica1.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.llopez.pruebapractica1.MenuFragment"
+        android:name="com.llopez.pruebapractica1.menu.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" >
         <action
@@ -33,6 +37,9 @@
         <action
             android:id="@+id/action_menuFragment_to_excerciseTwoFragment"
             app:destination="@id/excerciseTwoFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/excerciseOneFragment"

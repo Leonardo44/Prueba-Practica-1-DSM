@@ -1,4 +1,4 @@
-package com.llopez.pruebapractica1.login;
+package com.llopez.pruebapractica1.menu;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,17 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.llopez.pruebapractica1.R;
 
-public class LoginFragment extends Fragment {
-    private EditText editTextTextEmailAddress;
-    private EditText editTextTextPassword;
-    private Button btnLogin;
+public class MenuFragment extends Fragment {
+    private Button btnExcerciseOne;
+    private Button btnExcerciseTwo;
+    private Button btnLogout;
 
-    public LoginFragment() {
+    public MenuFragment() {
         // Required empty public constructor
     }
 
@@ -33,11 +31,13 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.fragment_login, container, false);
+        View layout = inflater.inflate(R.layout.fragment_menu, container, false);
 
-        editTextTextEmailAddress = layout.findViewById(R.id.editTextTextEmailAddress);
-        editTextTextPassword = layout.findViewById(R.id.editTextTextPassword);
-        btnLogin = layout.findViewById(R.id.btnLogin);
+        btnExcerciseOne = layout.findViewById(R.id.btnToExcerciseOne);
+        btnExcerciseTwo = layout.findViewById(R.id.btnToExcerciseTwo);
+        btnLogout = layout.findViewById(R.id.btnLogout);
+
+
 
         return layout;
     }
