@@ -1,11 +1,14 @@
 package com.llopez.pruebapractica1.excercise_1;
 
+import android.Manifest;
 import android.content.ContentProvider;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -27,6 +30,8 @@ import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.llopez.pruebapractica1.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import kotlin.Unit;
@@ -41,7 +46,14 @@ public class ExcerciseOneFragment extends Fragment {
     private Button btnCalculate;
     private ImageView userImageView;
 
-    public static String RESULT_LOAD_IMAGE = "RESULT_LOAD_IMAGE";
+    private Uri absolutePhotoUri;
+
+    private ActivityResultLauncher<String[]> selectPhotoFromGalleryContract;
+    private ActivityResultLauncher<String> requestPermissionContract;
+
+    //mime types of files.
+    private final String[] filesMimeTypes =  {"image/*"};
+    private final String readExternalStoragePermission = Manifest.permission.READ_EXTERNAL_STORAGE;
 
     public ExcerciseOneFragment() {
         // Required empty public constructor
@@ -50,6 +62,19 @@ public class ExcerciseOneFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        selectPhotoFromGalleryContract = registerForActivityResult(new ActivityResultContracts.OpenDocument(),  photoUri -> {
+            if (photoUri != null) {
+                absolutePhotoUri = photoUri;
+                userImageView.setImageURI(photoUri);
+            }
+        });
+
+        requestPermissionContract = registerForActivityResult(new ActivityResultContracts.RequestPermission(), result -> {
+            if (result) {
+                selectPhotoFromGalleryContract.launch(filesMimeTypes);
+            }
+        });
     }
 
     @Override
@@ -100,6 +125,7 @@ public class ExcerciseOneFragment extends Fragment {
     }
 
     private void requestImage() {
+        requestPermissionContract.launch(readExternalStoragePermission);
     }
 
     private void calculate() {
@@ -108,14 +134,14 @@ public class ExcerciseOneFragment extends Fragment {
         String salesString = txtSales.getText().toString().trim();
         String month = spinnerMonth.getSelectedItem().toString();
 
-        if (!name.isEmpty() || !code.isEmpty() || !salesString.isEmpty() || !month.isEmpty()) {
+        if (!name.isEmpty() && !code.isEmpty() && !salesString.isEmpty() && !month.isEmpty() && absolutePhotoUri != null) {
             try {
                 Double sales = Double.parseDouble(salesString);
 
                 if (sales > 0) {
                     Bundle bundle = new Bundle();
                     bundle.putString("userName", name);
-                    bundle.putString("userImage", name);
+                    bundle.putString("userImage", absolutePhotoUri.toString());
                     bundle.putString("userMonth", month);
                     bundle.putString("userSales", salesString);
 
@@ -132,5 +158,18 @@ public class ExcerciseOneFragment extends Fragment {
             Toast toast= Toast.makeText(getContext(), R.string.incorrect_data, Toast.LENGTH_SHORT);
             toast.show();
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        selectPhotoFromGalleryContract = null;
+        requestPermissionContract = null;
+        super.onDestroy();
+    }
+
+    @Override
+    public void onDestroyView() {
+        absolutePhotoUri = null;
+        super.onDestroyView();
     }
 }
