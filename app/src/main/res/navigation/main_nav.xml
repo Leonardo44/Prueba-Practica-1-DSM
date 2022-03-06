@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.llopez.pruebapractica1.menu.MenuFragment"
-        android:label="fragment_menu"
+        android:label="@string/menu_title"
         tools:layout="@layout/fragment_menu" >
         <action
             android:id="@+id/action_menuFragment_to_excerciseOneFragment"
@@ -44,11 +44,37 @@
     <fragment
         android:id="@+id/excerciseOneFragment"
         android:name="com.llopez.pruebapractica1.excercise_1.ExcerciseOneFragment"
-        android:label="fragment_excercise_one"
-        tools:layout="@layout/fragment_excercise_one" />
+        android:label="@string/menu_excercise_one"
+        tools:layout="@layout/fragment_excercise_one" >
+        <action
+            android:id="@+id/action_excerciseOneFragment_to_detailExcerciseOneFragment"
+            app:destination="@id/detailExcerciseOneFragment" >
+            <argument
+                android:name="userName"
+                app:argType="string"
+                android:defaultValue="-" />
+            <argument
+                android:name="userImage"
+                app:argType="string"
+                android:defaultValue="-" />
+            <argument
+                android:name="userMonth"
+                app:argType="string"
+                android:defaultValue="-" />
+            <argument
+                android:name="userSales"
+                app:argType="string"
+                android:defaultValue="-" />
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/excerciseTwoFragment"
         android:name="com.llopez.pruebapractica1.excercise_2.ExcerciseTwoFragment"
-        android:label="fragment_excercise_two"
+        android:label="@string/menu_excercise_two"
         tools:layout="@layout/fragment_excercise_two" />
+    <fragment
+        android:id="@+id/detailExcerciseOneFragment"
+        android:name="com.llopez.pruebapractica1.excercise_1.DetailExcerciseOneFragment"
+        android:label="@string/detail_user_fragment"
+        tools:layout="@layout/fragment_detail_excercise_one" />
 </navigation>

@@ -38,7 +38,7 @@ public class SplashFragment extends Fragment {
 
     private void verifyLogin() {
         SharedPreferences preferences = getActivity().getSharedPreferences("credential", Context.MODE_PRIVATE);
-        Boolean isLogged = preferences.getBoolean("c", false);
+        Boolean isLogged = preferences.getBoolean("isLogged", false);
 
         if (isLogged) {
             NavHostFragment.findNavController(this).navigate(R.id.action_splashFragment_to_menuFragment);

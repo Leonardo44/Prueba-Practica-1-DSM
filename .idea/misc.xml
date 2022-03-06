@@ -5,10 +5,13 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.30512820512820515" />
         <entry key="app/src/main/res/layout/app_bar.xml" value="0.30512820512820515" />
-        <entry key="app/src/main/res/layout/fragment_excercise_one.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_detail_excercise_one.xml" value="0.30512820512820515" />
+        <entry key="app/src/main/res/layout/fragment_excercise_one.xml" value="0.24946746826171878" />
+        <entry key="app/src/main/res/layout/fragment_excercise_two.xml" value="0.2916666666666667" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.26296234130859375" />
         <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.2942708333333333" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.30512820512820515" />
+        <entry key="app/src/main/res/layout/simple_spinner_item.xml" value="0.22447916666666667" />
       </map>
     </option>
   </component>

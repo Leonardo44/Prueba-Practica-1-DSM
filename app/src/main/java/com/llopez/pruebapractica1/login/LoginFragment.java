@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,11 +55,11 @@ public class LoginFragment extends Fragment {
         String email = preferences.getString("userEmail", "usuarioprueba2022@gmail.com");
         String password = preferences.getString("userPassword", "pa$$w0rd");
 
-        if (password == editTextTextPassword.getText().toString() && editTextTextEmailAddress.getText().toString().trim().isEmpty() == false) {
+        if (password.equals(editTextTextPassword.getText().toString()) && !editTextTextEmailAddress.getText().toString().trim().isEmpty()) {
             SharedPreferences.Editor editor = preferences.edit();
             editor.putBoolean("isLogged", true);
-            editor.putBoolean("userEmail", editTextTextEmailAddress.getText().toString().trim());
-            editor.commit();
+            editor.putString("userEmail", editTextTextEmailAddress.getText().toString().trim());
+            editor.apply();
 
             NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_menuFragment);
         } else {

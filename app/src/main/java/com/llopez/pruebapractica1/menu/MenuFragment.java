@@ -63,7 +63,9 @@ public class MenuFragment extends Fragment {
 
         SharedPreferences preferences = getActivity().getSharedPreferences("credential", Context.MODE_PRIVATE);
         String email = preferences.getString("userEmail", "usuarioprueba2022@gmail.com");
-        
+
+        tvUser.setText(email);
+
         return layout;
     }
     

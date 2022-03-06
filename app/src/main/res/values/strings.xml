@@ -15,4 +15,18 @@
     <string name="menu_excercise_one">Ejercicio 1</string>
     <string name="menu_excercise_two">Ejercicio 2</string>
     <string name="menu_excercise_lgout">Cerrar sesión</string>
+    <string name="menu_title">Menú</string>
+
+    <string name="excercise_one_name">Nombre de empleado</string>
+    <string name="excercise_one_code">Código de empleado</string>
+    <string name="excercise_one_sales">Ventas ($)</string>
+    <string name="excercise_one_btn">Calcular</string>
+    <string name="excercise_one_btn_upload">Subir foto</string>
+    <string name="incorrect_data">Data incorrecta</string>
+
+    <string name="excercise_two_a">Ingrese valor de a</string>
+    <string name="excercise_two_b">Ingrese valor de b</string>
+    <string name="excercise_two_c">Ingrese valor de c</string>
+
+    <string name="detail_user_fragment">Detalle de empleado</string>
 </resources>
